@@ -273,7 +273,7 @@ def config(url):
         return Response(config_content, content_type='text/plain; charset=utf-8')
     except subprocess.CalledProcessError as e:
         os.environ['TEMP_JSON_DATA'] = json.dumps(json.loads(data_json['TEMP_JSON_DATA']), indent=4, ensure_ascii=False)
-        return Response(json.dumps({'status': 'error'}, indent=4,ensure_ascii=False), content_type='application/json; charset=utf-8', status=500)
+        return Response(json.dumps({'status': 'error1'}, indent=4,ensure_ascii=False), content_type='application/json; charset=utf-8', status=500)
         #return jsonify({'status': 'error', 'message': str(e)}) 
     except Exception as e:
         #flash(f'Error occurred while generating the configuration file: {str(e)}', 'error')
@@ -308,7 +308,7 @@ def generate_config():
         return Response(config_content, content_type='text/plain; charset=utf-8')
     except subprocess.CalledProcessError as e:
         os.environ['TEMP_JSON_DATA'] = json.dumps(json.loads(data_json['TEMP_JSON_DATA']), indent=4, ensure_ascii=False)
-        return Response(json.dumps({'status': 'error'}, indent=4,ensure_ascii=False), content_type='application/json; charset=utf-8', status=500)
+        return Response(json.dumps({'status': 'error2'}, indent=4,ensure_ascii=False), content_type='application/json; charset=utf-8', status=500)
     except Exception as e:
         #flash(f'Error occurred while generating the configuration file: {str(e)}', 'error')
         return Response(json.dumps({'status': 'error', 'message_CN': '认真看刚刚的网页说明、github写的reademe文件;', 'message_VN': 'Quá thời gian phân tích đăng ký: Vui lòng kiểm tra xem liên kết đăng ký có chính xác không hoặc vui lòng chuyển sang "nogroupstemplate" và thử lại; Vui lòng không chỉnh sửa giá trị "tag", trừ khi bạn hiểu nó làm gì;', 'message_EN': 'Subscription parsing timeout: Please check if the subscription link is correct or please change to "no_groups_template" and try again; Please do not modify the "tag" value unless you understand what it does;'}, indent=4,ensure_ascii=False), content_type='application/json; charset=utf-8', status=500)
@@ -343,4 +343,4 @@ def download_config():
         return str(e)  # 或者适当处理异常，例如返回一个错误页面
 """
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True)
